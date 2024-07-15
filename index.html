@@ -5,43 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-  .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background-color: #f8f9fa;
-            padding-top: 20px;
-        }
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 18px;
-            color: #333;
-            display: block;
-        }
-        .sidebar a:hover {
-            background-color: #007bff;
-            color: #fff;
-        }
-        .content {
-            margin-left: 260px;
-            padding: 20px;
-        }
-        .card-header {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <h2 class="text-center">AMBITION</h2>
-        <a href="#">Dashboard</a>
+        <a href="#" class="active">Dashboard</a>
         <div class="dropdown">
             <a class="dropdown-toggle" href="#" id="seoDropdown" data-toggle="collapse" data-target="#seoMenu" aria-expanded="false">
                 SEO
@@ -87,123 +59,147 @@
         <a href="#">Settings</a>
     </div>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Visa service</h5>
-                        <h2>1289+</h2>
-                        <p class="text-danger">-12% Since last month</p>
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Visa service</h5>
+                            <h2>1289+</h2>
+                            <p class="text-danger">-12% Since last month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Visa service</h5>
+                            <h2>1289+</h2>
+                            <p class="text-danger">-12% Since last month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Visa service</h5>
+                            <h2>1289+</h2>
+                            <p class="text-danger">-12% Since last month</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Visa service</h5>
-                        <h2>1289+</h2>
-                        <p class="text-danger">-12% Since last month</p>
+            <div class="card mb-4">
+                <div class="card-header">
+                    Revenue
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                            <div class="revenue-stat bg-primary text-white">
+                                <h5>Orders</h5>
+                                <h2>7,585</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                            <div class="revenue-stat bg-success text-white">
+                                <h5>Earnings</h5>
+                                <h2>$22.89k</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                            <div class="revenue-stat bg-danger text-white">
+                                <h5>Canceled</h5>
+                                <h2>120</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                            <div class="revenue-stat bg-warning text-dark">
+                                <h5>Conversion Ratio</h5>
+                                <h2>18.92%</h2>
+                            </div>
+                        </div>
                     </div>
+                    <canvas id="revenueChart" width="100%"></canvas>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Visa service</h5>
-                        <h2>1289+</h2>
-                        <p class="text-danger">-12% Since last month</p>
-                    </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    Blogs
                 </div>
-            </div>
-        </div>
-        <div class="card mb-4">
-            <div class="card-header">
-                Revenue
-            </div>
-            <div class="card-body">
-                <div class="row text-center">
-                    <div class="col-md-3">
-                        <h5>Orders</h5>
-                        <h2>7,585</h2>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Earnings</h5>
-                        <h2>$22.89k</h2>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Canceled</h5>
-                        <h2>120</h2>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Conversion Ratio</h5>
-                        <h2>18.92%</h2>
-                    </div>
+                <div class="card-body">
+                    <canvas id="blogsChart" width="100%" ></canvas>
                 </div>
-                <canvas id="revenueChart" width="400" height="200"></canvas>
-            </div>
-        </div>
-        <div class="card mb-4">
-            <div class="card-header">
-                Blogs
-            </div>
-            <div class="card-body">
-                <canvas id="blogsChart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    var ctx = document.getElementById('revenueChart').getContext('2d');
-    var revenueChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            datasets: [{
-                label: 'Revenue',
-                data: [12000, 19000, 30000, 50000, 20000, 30000, 45000, 32000, 25000, 40000, 55000, 47000],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('revenueChart').getContext('2d');
+        var revenueChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [12000, 15000, 13000, 17000, 19000, 22000, 24000, 25000, 27000, 30000, 40000, 55000, 47000],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
+        });
 
-    var ctx2 = document.getElementById('blogsChart').getContext('2d');
-    var blogsChart = new Chart(ctx2, {
-        type: 'line',
-        data: {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-            datasets: [{
-                label: 'Blog Views',
-                data: [2000, 3000, 4000, 3500],
-                backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                borderColor: 'rgba(255, 159, 64, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+        var ctx2 = document.getElementById('blogsChart').getContext('2d');
+        var blogsChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Blog Views',
+                    data: [2000, 3000, 4000, 3500],
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        // Add active class on sidebar navigation click
+        document.querySelectorAll('.sidebar').forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar a').forEach(function(nav) {
+                    nav.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Toggle sidebar visibility
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
