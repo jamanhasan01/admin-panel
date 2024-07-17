@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./blog.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                       
+                        <div class="typeBlog">
+                            <input type="text" placeholder="Type blog title or ID..." id="searchInput">
+                            <button class=" btn-Clr ml-2" onclick="searchBlogs()">Search Blogs</button>
+                        </div>
+                        <div class="sectionDiv">
+                            <div class="d-flex">
+                                <select class="custom-select" id="bulkAction">
+                                    <option>Bulk Action</option>
+                                    <option>Delete</option>
+                                </select>
+                                <button class="btn btn-Clr ml-2" onclick="applyBulkAction()">Apply</button>
+                            </div>
+                            <div class="sectionCate">
+                                <select class="custom-select" id="categories">
+                                    <option>All Categories</option>
+                                    <option>Traveling</option>
+                                    <option>Technology</option>
+                                </select>
+                                <select class="custom-select ml-2" id="subCategories">
+                                    <option>Sub Categories</option>
+                                    <option>Adventure</option>
+                                    <option>Article</option>
+                                </select>
+                                <button class="btn btn-Clr ml-2" onclick="filterBlogs()">Filter</button>
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead class="th">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Categories</th>
+                                    <th>Published</th>
+                                    <th>ID</th>
+                                    <th>SEO Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="blogTableBody">
+                                <!-- Blog entries will be populated here -->
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./blog.js"></script>
+</body>
+</html>
